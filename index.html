@@ -1120,7 +1120,9 @@
             closeModal('musica-modal');
         }
 
-       function sendAttendanceData(e) {
+       const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzusbud_NxrbBuItQ-17eYJk60oe96nDknanUy8bUuIDu1pY8iRKD9-mzu0CwGjuzty4w/exec";
+
+function sendAttendanceData(e) {
     e.preventDefault();
 
     const name = document.getElementById('guest-name').value.trim();
@@ -1132,23 +1134,25 @@
         return;
     }
 
-    // 1. Deshabilitar botón durante el proceso
     btn.innerText = "ENVIANDO...";
     btn.disabled = true;
 
-    // 2. Enviar a Google Sheets vía fetch
+    // Payload de datos
+    const payload = {
+        type: 'asistencia',
+        nombre: name,
+        asistencia: attendance
+    };
+
+    // Usamos text/plain para evitar que la restricción de CORS bloquee el envío hacia Apps Script
     fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            type: 'asistencia',
-            nombre: name,
-            asistencia: attendance
-        })
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload)
     })
     .then(() => {
-        // 3. Redirigir/Abrir WhatsApp
+        // Redirección a WhatsApp
         const phone = "5493813458991";
         const text = `¡Hola! Confirmo mi asistencia a los 15 de Tihara.\n*Nombre:* ${name}\n*Respuesta:* ${attendance}`;
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
@@ -1158,7 +1162,7 @@
     })
     .catch(error => {
         alert("Ocurrió un error al enviar la información.");
-        console.error(error);
+        console.error("Error:", error);
     })
     .finally(() => {
         btn.innerText = "ENVIAR CONFIRMACIÓN";
