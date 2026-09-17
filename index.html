@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis 15 - Tihara Albornoz</title>
-    <!-- Metadatos para que la vista previa en WhatsApp se vea hermosa -->
+    <!-- Metadatos para vista previa en WhatsApp -->
     <meta property="og:title" content="Mis 15 Años - Tihara Albornoz">
     <meta property="og:description" content="Te invito a vivir una noche inolvidable. Haz clic aquí para ver la invitación, confirmar tu asistencia y sugerir temas.">
     <meta property="og:image" content="https://tomassalcedo661.github.io/La-invitacion/imagen1.jpeg">
@@ -45,42 +45,37 @@
             position: relative;
         }
 
-        /* --- Flores Vectoriales SVG en Esquinas --- */
-        .svg-flower {
+        /* --- Flores Vectoriales (imagen3.png) en Esquinas --- */
+        .corner-flower {
             position: fixed;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.35;
-            width: 220px;
-            height: 220px;
-            fill: none;
-            stroke: #d8bfd8; /* Color lila suave */
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+            opacity: 0.45;
+            width: 180px;
+            height: auto;
             filter: drop-shadow(0 0 8px rgba(216, 191, 216, 0.3));
         }
 
         .flower-top-left {
-            top: -20px;
-            left: -20px;
+            top: -10px;
+            left: -10px;
         }
 
         .flower-top-right {
-            top: -20px;
-            right: -20px;
+            top: -10px;
+            right: -10px;
             transform: scaleX(-1);
         }
 
         .flower-bottom-left {
-            bottom: -20px;
-            left: -20px;
+            bottom: -10px;
+            left: -10px;
             transform: scaleY(-1);
         }
 
         .flower-bottom-right {
-            bottom: -20px;
-            right: -20px;
+            bottom: -10px;
+            right: -10px;
             transform: rotate(180deg);
         }
 
@@ -185,7 +180,7 @@
             z-index: 1;
         }
 
-        /* Estilo base de Tarjetas Claras / Elegantes */
+        /* Estilo base de Tarjetas */
         .card-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -216,6 +211,27 @@
             z-index: 100;
             color: #fff;
             font-size: 1.1rem;
+        }
+
+        /* --- Separadores Visuales --- */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 5px 0;
+            color: rgba(216, 191, 216, 0.6);
+        }
+
+        .section-divider .line {
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, rgba(216, 191, 216, 0.35), transparent);
+        }
+
+        .section-divider i {
+            font-size: 0.85rem;
+            text-shadow: 0 0 8px rgba(216, 191, 216, 0.4);
         }
 
         /* --- Tarjeta Principal (Hero) --- */
@@ -251,7 +267,7 @@
             padding: 0 10px;
         }
 
-        /* --- Tarjeta de Fecha y Hora (2 Columnas) --- */
+        /* --- Tarjeta de Fecha y Hora --- */
         .date-time-card {
             display: grid;
             grid-template-columns: 1fr 1px 1fr;
@@ -354,7 +370,6 @@
             display: block;
         }
 
-        /* Flecha animada sutil */
         .scroll-arrow {
             text-align: center;
             color: rgba(255, 255, 255, 0.5);
@@ -396,6 +411,57 @@
             color: var(--text-sub);
             font-weight: 300;
             margin-bottom: 25px;
+        }
+
+        /* --- Cronograma --- */
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(216, 191, 216, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timeline-time {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .timeline-label {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-weight: 400;
         }
 
         .btn-action-light {
@@ -545,7 +611,6 @@
             color: #fff;
         }
 
-        /* Elementos del Modal de Regalos */
         .bank-data-box {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -609,65 +674,11 @@
 </head>
 <body>
 
-    <!-- SVG Flores Dibujadas en Lila (Esquina Arriba Izquierda) -->
-    <svg class="svg-flower flower-top-left" viewBox="0 0 100 100">
-        <path d="M 10 10 C 30 10, 40 30, 50 50 C 30 40, 10 30, 10 10 Z" fill="rgba(216, 191, 216, 0.15)"/>
-        <path d="M 10 10 C 10 30, 30 40, 50 50 C 40 30, 30 10, 10 10 Z" fill="rgba(216, 191, 216, 0.15)"/>
-        <path d="M 50 50 Q 70 20, 85 15 M 50 50 Q 80 40, 90 35 M 50 50 Q 60 70, 75 80" />
-        <circle cx="85" cy="15" r="4" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="90" cy="35" r="3" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="75" cy="80" r="5" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="30" cy="30" r="6" fill="#d8bfd8" />
-        <path d="M 30 15 C 25 22, 35 22, 30 15 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 30 45 C 25 38, 35 38, 30 45 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 15 30 C 22 25, 22 35, 15 30 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 45 30 C 38 25, 38 35, 45 30 Z" fill="rgba(216, 191, 216, 0.3)"/>
-    </svg>
-
-    <!-- SVG Flores Dibujadas en Lila (Esquina Arriba Derecha) -->
-    <svg class="svg-flower flower-top-right" viewBox="0 0 100 100">
-        <path d="M 10 10 C 30 10, 40 30, 50 50 C 30 40, 10 30, 10 10 Z" fill="rgba(216, 191, 216, 0.15)"/>
-        <path d="M 10 10 C 10 30, 30 40, 50 50 C 40 30, 30 10, 10 10 Z" fill="rgba(216, 191, 216, 0.15)"/>
-        <path d="M 50 50 Q 70 20, 85 15 M 50 50 Q 80 40, 90 35 M 50 50 Q 60 70, 75 80" />
-        <circle cx="85" cy="15" r="4" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="90" cy="35" r="3" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="75" cy="80" r="5" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="30" cy="30" r="6" fill="#d8bfd8" />
-        <path d="M 30 15 C 25 22, 35 22, 30 15 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 30 45 C 25 38, 35 38, 30 45 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 15 30 C 22 25, 22 35, 15 30 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 45 30 C 38 25, 38 35, 45 30 Z" fill="rgba(216, 191, 216, 0.3)"/>
-    </svg>
-
-    <!-- SVG Flores Dibujadas en Lila (Esquina Abajo Izquierda) -->
-    <svg class="svg-flower flower-bottom-left" viewBox="0 0 100 100">
-        <path d="M 10 10 C 30 10, 40 30, 50 50 C 30 40, 10 30, 10 10 Z" fill="rgba(216, 191, 216, 0.15)"/>
-        <path d="M 10 10 C 10 30, 30 40, 50 50 C 40 30, 30 10, 10 10 Z" fill="rgba(216, 191, 216, 0.15)"/>
-        <path d="M 50 50 Q 70 20, 85 15 M 50 50 Q 80 40, 90 35 M 50 50 Q 60 70, 75 80" />
-        <circle cx="85" cy="15" r="4" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="90" cy="35" r="3" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="75" cy="80" r="5" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="30" cy="30" r="6" fill="#d8bfd8" />
-        <path d="M 30 15 C 25 22, 35 22, 30 15 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 30 45 C 25 38, 35 38, 30 45 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 15 30 C 22 25, 22 35, 15 30 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 45 30 C 38 25, 38 35, 45 30 Z" fill="rgba(216, 191, 216, 0.3)"/>
-    </svg>
-
-    <!-- SVG Flores Dibujadas en Lila (Esquina Abajo Derecha) -->
-    <svg class="svg-flower flower-bottom-right" viewBox="0 0 100 100">
-        <path d="M 10 10 C 30 10, 40 30, 50 50 C 30 40, 10 30, 10 10 Z" fill="rgba(216, 191, 216, 0.15)"/>
-        <path d="M 10 10 C 10 30, 30 40, 50 50 C 40 30, 30 10, 10 10 Z" fill="rgba(216, 191, 216, 0.15)"/>
-        <path d="M 50 50 Q 70 20, 85 15 M 50 50 Q 80 40, 90 35 M 50 50 Q 60 70, 75 80" />
-        <circle cx="85" cy="15" r="4" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="90" cy="35" r="3" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="75" cy="80" r="5" fill="rgba(216, 191, 216, 0.4)"/>
-        <circle cx="30" cy="30" r="6" fill="#d8bfd8" />
-        <path d="M 30 15 C 25 22, 35 22, 30 15 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 30 45 C 25 38, 35 38, 30 45 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 15 30 C 22 25, 22 35, 15 30 Z" fill="rgba(216, 191, 216, 0.3)"/>
-        <path d="M 45 30 C 38 25, 38 35, 45 30 Z" fill="rgba(216, 191, 216, 0.3)"/>
-    </svg>
+    <!-- Flores en imagen3.png colocadas en las esquinas -->
+    <img src="imagen3.png" alt="Flores decorativas" class="corner-flower flower-top-left">
+    <img src="imagen3.png" alt="Flores decorativas" class="corner-flower flower-top-right">
+    <img src="imagen3.png" alt="Flores decorativas" class="corner-flower flower-bottom-left">
+    <img src="imagen3.png" alt="Flores decorativas" class="corner-flower flower-bottom-right">
 
     <!-- Pantalla de Bienvenida -->
     <div id="welcome-screen" class="welcome-screen">
@@ -711,6 +722,13 @@
             <i class="fa-solid fa-chevron-down"></i>
         </div>
 
+        <!-- Separador 1 -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-heart"></i>
+            <div class="line"></div>
+        </div>
+
         <!-- Tarjeta Fecha y Horario -->
         <div class="card-box date-time-card">
             <div class="date-col">
@@ -726,6 +744,13 @@
             </div>
         </div>
 
+        <!-- Separador 2 -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-star"></i>
+            <div class="line"></div>
+        </div>
+
         <!-- Galería de Fotos -->
         <div class="card-box" style="padding: 20px 15px;">
             <div class="section-header" style="margin-bottom: 15px;">
@@ -735,12 +760,19 @@
             </div>
             <div class="gallery-container">
                 <div class="gallery-item">
-                    <img src="imagen1.jpeg" alt="Tihara foto 1">
-                </div>
-                <div class="gallery-item">
                     <img src="imagen2.jpeg" alt="Tihara foto 2">
                 </div>
+                <div class="gallery-item">
+                    <img src="imagen1.jpeg" alt="Tihara foto 1">
+                </div>
             </div>
+        </div>
+
+        <!-- Separador 3 -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-clock"></i>
+            <div class="line"></div>
         </div>
 
         <!-- Cuenta Regresiva -->
@@ -770,6 +802,13 @@
             </div>
         </div>
 
+        <!-- Separador 4 -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="line"></div>
+        </div>
+
         <!-- Tarjeta Ubicación del Salón -->
         <div class="card-box">
             <div class="loc-icon">
@@ -782,6 +821,75 @@
             <a href="https://maps.app.goo.gl/HFgXJ7hvxiPSGXUS9" target="_blank" class="btn-action-light">
                 <i class="fa-map-location-dot fa-solid"></i> VER EN GOOGLE MAPS
             </a>
+        </div>
+
+        <!-- Separador Cronograma -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-list-check"></i>
+            <div class="line"></div>
+        </div>
+
+        <!-- Tarjeta Cronograma -->
+        <div class="card-box">
+            <div style="font-size: 2rem; color: #ffffff; margin-bottom: 12px; text-shadow: 0 0 10px rgba(255,255,255,0.4);">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 2px; color: #ffffff; margin-bottom: 15px;">
+                Cronograma
+            </div>
+
+            <div class="timeline-list">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="timeline-details">
+                        <span class="timeline-time">21:30 HS</span>
+                        <span class="timeline-label">Ingreso de invitados</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-crown"></i></div>
+                    <div class="timeline-details">
+                        <span class="timeline-time">22:30 HS</span>
+                        <span class="timeline-label">Mi ingreso</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="timeline-details">
+                        <span class="timeline-time">23:00 HS</span>
+                        <span class="timeline-label">Cena</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                    <div class="timeline-details">
+                        <span class="timeline-time">23:30 HS</span>
+                        <span class="timeline-label">Vals</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <div class="timeline-details">
+                        <span class="timeline-time">00:00 HS</span>
+                        <span class="timeline-label">Inicio de la fiesta</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-moon"></i></div>
+                    <div class="timeline-details">
+                        <span class="timeline-time">05:30 HS</span>
+                        <span class="timeline-label">Fin del evento</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Separador 5 -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-user-tie"></i>
+            <div class="line"></div>
         </div>
 
         <!-- Tarjeta Código de Vestimenta -->
@@ -800,7 +908,14 @@
             </div>
         </div>
 
-        <!-- Tarjeta Confirmar Asistencia con Fecha Límite -->
+        <!-- Separador 6 -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-envelope"></i>
+            <div class="line"></div>
+        </div>
+
+        <!-- Tarjeta Confirmar Asistencia -->
         <div class="card-box" style="padding: 25px 22px;">
             <p style="font-size: 0.85rem; color: var(--text-sub); font-weight: 500; margin-bottom: 14px; letter-spacing: 0.5px;">
                 Confirmar asistencia hasta el 5 de octubre
@@ -808,6 +923,13 @@
             <button class="btn-action-dark" onclick="openModal('asistencia-modal')">
                 <i class="fa-solid fa-envelope"></i> CONFIRMAR ASISTENCIA
             </button>
+        </div>
+
+        <!-- Separador 7 -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-music"></i>
+            <div class="line"></div>
         </div>
 
         <!-- Tarjeta Sugerir Canciones -->
@@ -818,6 +940,13 @@
             <button class="btn-action-dark" onclick="openModal('musica-modal')">
                 <i class="fa-solid fa-music"></i> SUGERIR CANCIÓN
             </button>
+        </div>
+
+        <!-- Separador 8 -->
+        <div class="section-divider">
+            <div class="line"></div>
+            <i class="fa-solid fa-gift"></i>
+            <div class="line"></div>
         </div>
 
         <!-- Tarjeta Regalos -->
@@ -903,95 +1032,56 @@
                 </div>
                 <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
                 <div class="bank-item">
-                    <span class="bank-label">CVU</span>
+                    <span class="bank-label">Alias</span>
                     <div class="bank-value-row">
-                        <span class="bank-value" id="cvu-text">0000003100042402334725</span>
-                        <button class="btn-copy" onclick="copyText('cvu-text', this)">
+                        <span class="bank-value" id="alias-text">tihara.15</span>
+                        <button class="btn-copy" onclick="copyText('alias-text', this)">
                             <i class="fa-regular fa-copy"></i> Copiar
                         </button>
                     </div>
                 </div>
                 <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
                 <div class="bank-item">
-                    <span class="bank-label">Alias</span>
+                    <span class="bank-label">CBU / CVU</span>
                     <div class="bank-value-row">
-                        <span class="bank-value" id="alias-text">tihara.albornoz</span>
-                        <button class="btn-copy" onclick="copyText('alias-text', this)">
+                        <span class="bank-value" id="cbu-text">0000003100084729104821</span>
+                        <button class="btn-copy" onclick="copyText('cbu-text', this)">
                             <i class="fa-regular fa-copy"></i> Copiar
                         </button>
                     </div>
                 </div>
             </div>
-
-            <p style="font-size: 0.75rem; color: var(--text-sub); font-style: italic; margin-top: 15px;">
-                ¡También habrá buzón de sobres el día de la fiesta!
-            </p>
         </div>
     </div>
 
     <script>
-        function enterCard(withMusic) {
-            const welcomeScreen = document.getElementById('welcome-screen');
-            welcomeScreen.classList.add('hidden');
+        const audio = document.getElementById('bg-music');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlaying = false;
 
-            const audio = document.getElementById('bg-music');
-            const icon = document.getElementById('music-icon');
-
-            if (withMusic) {
+        function enterCard(playWithMusic) {
+            document.getElementById('welcome-screen').classList.add('hidden');
+            if (playWithMusic) {
                 audio.play().then(() => {
-                    icon.className = "fa-solid fa-pause";
+                    isPlaying = true;
+                    musicIcon.className = "fa-solid fa-volume-high";
                 }).catch(err => {
-                    console.log("Error al reproducir audio: ", err);
-                    icon.className = "fa-solid fa-music";
+                    console.log("Auto-play prevenido por el navegador", err);
                 });
-            } else {
-                icon.className = "fa-solid fa-music";
             }
         }
 
-        // Cuenta Regresiva
-        const targetDate = new Date('October 17, 2026 21:30:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
-
-            if (difference < 0) {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
-                return;
-            }
-
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Control de Música
         function toggleMusic() {
-            const audio = document.getElementById('bg-music');
-            const icon = document.getElementById('music-icon');
-            if (audio.paused) {
-                audio.play();
-                icon.className = "fa-solid fa-pause";
-            } else {
+            if (isPlaying) {
                 audio.pause();
-                icon.className = "fa-solid fa-music";
+                musicIcon.className = "fa-solid fa-volume-xmark";
+            } else {
+                audio.play();
+                musicIcon.className = "fa-solid fa-volume-high";
             }
+            isPlaying = !isPlaying;
         }
 
-        // Modales
         function openModal(id) {
             document.getElementById(id).style.display = 'flex';
         }
@@ -1002,94 +1092,74 @@
 
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
-                event.target.style.display = "none";
+                event.target.style.display = 'none';
             }
-        }
+        };
 
-        // Función para copiar texto
         function copyText(elementId, btn) {
             const textToCopy = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalContent = btn.innerHTML;
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado';
-                btn.style.background = 'rgba(76, 175, 80, 0.4)';
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> ¡Copiado!';
                 setTimeout(() => {
-                    btn.innerHTML = originalContent;
-                    btn.style.background = '';
+                    btn.innerHTML = originalText;
                 }, 2000);
-            }).catch(err => {
-                console.error('Error al copiar: ', err);
             });
         }
 
-        // Google Apps Script URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwLhSW9nWVbDpId2XvT4ScNVO3YCAVcOxa0y6XsHnWpFOf74StKTUYkAiSBSR4Ff09gCg/exec';
-        
-        // Número de WhatsApp para recibir las confirmaciones y canciones
-        const myPhoneNumber = "5493812010709";
-
-        function sendAttendanceData(event) {
-            const name = document.getElementById('guest-name').value.trim();
-            const attendance = document.getElementById('attendance').value;
-
-            if(!name) { 
-                alert("Por favor, ingresa tu nombre."); 
-                return; 
-            }
-
-            const btn = document.getElementById('btn-submit-attendance');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ENVIANDO...';
-            btn.disabled = true;
-
-            const data = {
-                nombre: name,
-                asistencia: attendance
-            };
-
-            // 1. Enviar datos a Google Sheets
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            .then(() => {
-                // 2. Armar mensaje y abrir WhatsApp
-                const message = `✨ *Confirmación de Asistencia - 15 de Tihara* ✨\n\n👤 *Nombre y Apellido:* ${name}\n📌 *¿Asistirá?:* ${attendance}`;
-                
-                window.open(`https://api.whatsapp.com/send?phone=${myPhoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
-
-                closeModal('asistencia-modal');
-                document.getElementById('guest-name').value = '';
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert("Hubo un problema al guardar la confirmación. Por favor intenta de nuevo.");
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            });
-        }
-
-        // Sugerir Canción enviando mensaje directo a tu WhatsApp
         function sendSongWhatsApp() {
             const song = document.getElementById('song-name').value.trim();
             const artist = document.getElementById('song-artist').value.trim();
-
-            if(!song) { 
-                alert("Por favor, ingresa el nombre de la canción."); 
-                return; 
+            if(!song) {
+                alert('Por favor ingresa al menos el nombre de la canción');
+                return;
             }
-
-            const message = `🎵 *Sugerencia de Canción - 15 de Tihara* 🎵\n\n🎧 *Tema:* ${song}\n🎤 *Artista:* ${artist || 'No especificado'}`;
-            window.open(`https://api.whatsapp.com/send?phone=${myPhoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
-
+            const phone = "5493816292253";
+            const text = `¡Hola! Me gustaría sugerir una canción para la fiesta: *${song}* ${artist ? 'de ' + artist : ''}`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
             closeModal('musica-modal');
-            document.getElementById('song-name').value = '';
-            document.getElementById('song-artist').value = '';
         }
+
+        function sendAttendanceData(e) {
+            e.preventDefault();
+            const name = document.getElementById('guest-name').value.trim();
+            const attendance = document.getElementById('attendance').value;
+            if(!name) {
+                alert('Por favor ingresa tu nombre');
+                return;
+            }
+            const phone = "5493816292253";
+            const text = `¡Hola! Confirmo mi asistencia a los 15 de Tihara.\n*Nombre:* ${name}\n*Respuesta:* ${attendance}`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+            closeModal('asistencia-modal');
+        }
+
+        const eventDate = new Date('October 17, 2026 21:30:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = eventDate - now;
+
+            if (difference > 0) {
+                const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+                document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+                document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+                document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+            } else {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
