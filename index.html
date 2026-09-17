@@ -1120,37 +1120,55 @@
             closeModal('musica-modal');
         }
 
-        function sendAttendanceData(e) {
-            e.preventDefault();
-            const name = document.getElementById('guest-name').value.trim();
-            const attendance = document.getElementById('attendance').value;
-            if(!name) {
-                alert('Por favor ingresa tu nombre');
-                return;
-            }
-            const phone = "5493813458991";
-            const text = `¡Hola! Confirmo mi asistencia a los 15 de Tihara.\n*Nombre:* ${name}\n*Respuesta:* ${attendance}`;
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-            closeModal('asistencia-modal');
-        }
+       function sendAttendanceData(e) {
+    e.preventDefault();
 
+    const name = document.getElementById('guest-name').value.trim();
+    const attendance = document.getElementById('attendance').value;
+    const btn = document.getElementById('btn-submit-attendance');
+
+    if (!name) {
+        alert("Por favor, ingresa tu nombre.");
+        return;
+    }
+
+    // 1. Deshabilitar botón durante el proceso
+    btn.innerText = "ENVIANDO...";
+    btn.disabled = true;
+
+    // 2. Enviar a Google Sheets vía fetch
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            type: 'asistencia',
+            nombre: name,
+            asistencia: attendance
+        })
+    })
+    .then(() => {
+        // 3. Redirigir/Abrir WhatsApp
+        const phone = "5493813458991";
+        const text = `¡Hola! Confirmo mi asistencia a los 15 de Tihara.\n*Nombre:* ${name}\n*Respuesta:* ${attendance}`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+
+        closeModal('asistencia-modal');
+        document.getElementById('guest-name').value = '';
+    })
+    .catch(error => {
+        alert("Ocurrió un error al enviar la información.");
+        console.error(error);
+    })
+    .finally(() => {
+        btn.innerText = "ENVIAR CONFIRMACIÓN";
+        btn.disabled = false;
+    });
+}
         // Si estás usando Google Apps Script para guardar en Sheets, llamás a la función aquí:
         saveToGoogleSheets(name, attendance);
 
-        function saveToGoogleSheets(name, attendance) {
-          const scriptURL = 'AQUÍ_PEGA_TU_URL_DE_APPS_SCRIPT';
-    
-          fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name: name, attendance: attendance })
-        })
-        .then(response => console.log('Guardado en Sheets exitosamente'))
-        .catch(error => console.error('Error al guardar en Sheets:', error));
-          }
+       
         closeModal('asistencia-modal');
         const eventDate = new Date('October 17, 2026 21:30:00').getTime();
 
