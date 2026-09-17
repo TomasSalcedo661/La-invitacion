@@ -1134,6 +1134,10 @@
             closeModal('asistencia-modal');
         }
 
+        // Si estás usando Google Apps Script para guardar en Sheets, llamás a la función aquí:
+        saveToGoogleSheets(name, attendance);
+
+        closeModal('asistencia-modal');
         const eventDate = new Date('October 17, 2026 21:30:00').getTime();
 
         function updateCountdown() {
